@@ -142,10 +142,12 @@ const client = new MongoClient(url);
     const assets = await assetsCollection.find({}).toArray();
     const response = assets.map((asset) => ({
       ...asset,
+      // high quality
       total_collateral: asset.sub_assets.reduce(
         (sum, v) => sum + v.total_collateral,
         0
       ),
+      // borrow
       total_borrowed: asset.sub_assets.reduce(
         (sum, v) => sum + v.total_borrowed,
         0
@@ -169,12 +171,12 @@ const client = new MongoClient(url);
     const assets = await getAssets();
     // total cash
     reservesData[0].assets[0].total = assets.reduce(
-      (sum, v) => sum + v.available_liquidity,
+      (sum, v) => sum + v.available_liquidity - v.total_borrowed,
       0
     );
     // total HQLA
     reservesData[0].assets[1].total = assets.reduce(
-      (sum, v) => sum + v.total_collateral,
+      (sum, v) => sum + v.total_collateral + 2 * v.total_borrowed,
       0
     );
 

@@ -72,6 +72,7 @@ const client = new MongoClient(url);
           (sum, v) => sum + v.total_borrowed + v.total_collateral,
           0
         ),
+        // Cash
         available_liquidity: asset.sub_assets.reduce(
           (sum, v) => sum + v.available_liquidity,
           0
@@ -153,6 +154,7 @@ const client = new MongoClient(url);
         (sum, v) => sum + v.total_borrowed + v.total_collateral,
         0
       ),
+      // cash
       available_liquidity: asset.sub_assets.reduce(
         (sum, v) => sum + v.available_liquidity,
         0
@@ -172,7 +174,7 @@ const client = new MongoClient(url);
     );
     // total HQLA
     reservesData[0].assets[1].total = assets.reduce(
-      (sum, v) => sum + v.total_collateral * 2,
+      (sum, v) => sum + v.total_collateral,
       0
     );
 

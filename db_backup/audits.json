@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "62fbf16a373b1bd05148ec94"
+  },
+  "title": "Real Estate",
+  "value": 2186262477.39
+},{
+  "_id": {
+    "$oid": "62fbf189373b1bd05148ec95"
+  },
+  "title": "Commodities",
+  "value": 1128982126.81
+},{
+  "_id": {
+    "$oid": "62fbf1a3373b1bd05148ec96"
+  },
+  "title": "Digital Assets",
+  "value": 724871941.18
+},{
+  "_id": {
+    "$oid": "62fbf1bf373b1bd05148ec97"
+  },
+  "title": "Stocks",
+  "value": 406581796.28
+}]

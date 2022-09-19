@@ -1,0 +1,115 @@
+[{
+  "_id": {
+    "$oid": "62f3d2ec07e8acd97d37bec1"
+  },
+  "title": "Spade Smart Reserves",
+  "is_verified": true,
+  "tooltip": "Spade Smart Reserves",
+  "color": "green",
+  "bottom_label": "# of Contributors",
+  "bottom_value": 1284,
+  "bottom_tooltip": "Sum of both from contributors from our Liquidity pool & Collateral collected from loans",
+  "assets": [
+    {
+      "title": "Cash",
+      "update_type": "auto"
+    },
+    {
+      "title": "High-quaity Liquid Assets",
+      "update_type": "auto"
+    },
+    {
+      "title": "Others",
+      "total": 300500,
+      "update_type": "manual"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62f3d30107e8acd97d37bec2"
+  },
+  "title": "Borrowed",
+  "is_verified": false,
+  "tooltip": "Borrowed",
+  "color": "purple",
+  "bottom_label": "# of Borrowers",
+  "bottom_value": 218,
+  "bottom_tooltip": "Number of Borrowers who have provided collateral to have access to our liquidity at the appropriate LTV",
+  "assets": [
+    {
+      "title": "Authorized Currency Issuance",
+      "items": [
+        {
+          "title": "USD",
+          "total": 671642835,
+          "update_type": "manual"
+        },
+        {
+          "title": "GBP",
+          "total": 281642835,
+          "update_type": "manual"
+        },
+        {
+          "title": "EUR",
+          "total": 371642835,
+          "update_type": "manual"
+        },
+        {
+          "title": "Stablecoins",
+          "update_type": "auto"
+        }
+      ]
+    },
+    {
+      "title": "Quarantined",
+      "items": [
+        {
+          "title": "Fiat currencies",
+          "total": 2300000,
+          "update_type": "manual"
+        },
+        {
+          "title": "Stablecoin currencies",
+          "total": 310000,
+          "update_type": "manual"
+        }
+      ]
+    }
+  ],
+  "multi_level_assets": true,
+  "total": 1358214177.43
+},{
+  "_id": {
+    "$oid": "62f3d31407e8acd97d37bec3"
+  },
+  "title": "Collateral Value",
+  "is_verified": true,
+  "tooltip": "Collateral Value",
+  "color": "teal",
+  "bottom_label": "# of Providers",
+  "bottom_value": 226,
+  "bottom_tooltip": "Number of Contributors who have provided the appropriate collateral for access to our cash liquidity pool at the appropriate LTV",
+  "assets": [
+    {
+      "title": "Real Estate",
+      "update_type": "auto"
+    },
+    {
+      "title": "Digital Assets",
+      "update_type": "auto"
+    },
+    {
+      "title": "Commodities",
+      "update_type": "auto"
+    },
+    {
+      "title": "Stocks",
+      "update_type": "auto"
+    },
+    {
+      "title": "Others",
+      "total": 300500,
+      "update_type": "auto"
+    }
+  ]
+}]

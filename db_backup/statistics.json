@@ -1,0 +1,10 @@
+[{
+  "_id": {
+    "$oid": "62f3d45007e8acd97d37bec6"
+  },
+  "24h_rebalancing": 993516.13,
+  "24h_volume": 63964480.96,
+  "30d_volume": 1017261910.28,
+  "last_recorded": "31/08/2022 03:23:44 PM UTC",
+  "stablecoin_last_recorded": "31/08/2022 03:01:28 PM UTC"
+}]

@@ -1,0 +1,216 @@
+[{
+  "_id": {
+    "$oid": "62fd0874373b1bd05148ec9c"
+  },
+  "name": "Cash",
+  "tooltip": "Spade Cash Reserves are held with our banking partners within the United States, United Kingdom, Japan & Cayman Islands",
+  "items": [
+    {
+      "name": "Goldman Sachs Group Inc",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Wells Fargo & Co.",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Bank Of America Corp",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Citi",
+      "total": 8551000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Goldman Sachs Group Inc",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Wells Fargo & Co.",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Bank Of America Corp",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Citi",
+      "total": 8551000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Goldman Sachs Group Inc",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Wells Fargo & Co.",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Bank Of America Corp",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Citi",
+      "total": 8551000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Goldman Sachs Group Inc",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Wells Fargo & Co.",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Bank Of America Corp",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Citi",
+      "total": 8551000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62fd0894373b1bd05148ec9d"
+  },
+  "name": "Real Estate",
+  "tooltip": "Real Estate",
+  "items": [
+    {
+      "name": "On Tron",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "On Tron",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "On Tron",
+      "total": 85251000.5,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62fd08a3373b1bd05148ec9e"
+  },
+  "name": "Commodities",
+  "tooltip": "Commodities",
+  "items": [
+    {
+      "name": "Brinks",
+      "total": 1120401860,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "LNG Facility - ConocoPhillips",
+      "total": 8580264.16376,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62fd08af373b1bd05148ec9f"
+  },
+  "name": "Digital Assets",
+  "tooltip": "Digital Assets",
+  "items": [
+    {
+      "name": "Bitcoin",
+      "total": 89210629.63,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Ethereum",
+      "total": 63566311.56,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62fd08be373b1bd05148eca0"
+  },
+  "name": "Stock Index",
+  "tooltip": "Stocks",
+  "items": [
+    {
+      "name": "Apple (AAPL)",
+      "total": 320833695.44,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "Microsoft (MSFT)",
+      "total": 46594273.85,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    }
+  ]
+}]

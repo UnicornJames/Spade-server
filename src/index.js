@@ -19,10 +19,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const ethApi = require("etherscan-api").init(
-  "V9NP1HTIADE3VRWGGZ6SWPYGVX3BN83KEP"
+  "V9NP1HTIADE3VRWGGZ6SWPYGVX3BN83KEP",
 );
 
-const url = "mongodb+srv://jameshiro:mFy7tYPXnzOhuqcB@cluster0.gx0wfrc.mongodb.net/test";
+const url =
+  "mongodb+srv://jameshiro:mFy7tYPXnzOhuqcB@cluster0.gx0wfrc.mongodb.net/test";
 const client = new MongoClient(url);
 
 (async () => {
@@ -62,20 +63,20 @@ const client = new MongoClient(url);
         ...asset,
         total_collateral: asset.sub_assets.reduce(
           (sum, v) => sum + v.total_collateral,
-          0
+          0,
         ),
         total_borrowed: asset.sub_assets.reduce(
           (sum, v) => sum + v.total_borrowed,
-          0
+          0,
         ),
         reserve_size: asset.sub_assets.reduce(
           (sum, v) => sum + v.total_borrowed + v.total_collateral,
-          0
+          0,
         ),
         // Cash
         available_liquidity: asset.sub_assets.reduce(
           (sum, v) => sum + v.available_liquidity,
-          0
+          0,
         ),
         _id: undefined,
         sub_assets: undefined,
@@ -140,11 +141,12 @@ const client = new MongoClient(url);
 
   const getAssets = async () => {
     const assets = await assetsCollection.find({}).toArray();
+
     const response = assets.map((asset) => ({
       ...asset,
-      // high quality
-      total_collateral: asset.sub_assets.reduce(
-        (sum, v) => sum + v.total_collateral,
+      // cash
+      available_liquidity: asset.sub_assets.reduce(
+        (sum, v) => sum + v.available_liquidity,
         0
       ),
       // borrow
@@ -156,12 +158,13 @@ const client = new MongoClient(url);
         (sum, v) => sum + v.total_borrowed + v.total_collateral,
         0
       ),
-      // cash
-      available_liquidity: asset.sub_assets.reduce(
-        (sum, v) => sum + v.available_liquidity,
+      // high quality
+      total_collateral: asset.sub_assets.reduce(
+        (sum, v) => sum + v.total_collateral,
         0
       ),
     }));
+    console.log(response);
     return response;
   };
 
@@ -171,13 +174,13 @@ const client = new MongoClient(url);
     const assets = await getAssets();
     // total cash
     reservesData[0].assets[0].total = assets.reduce(
-      (sum, v) => sum + v.available_liquidity - v.total_borrowed,
-      0
+      (sum, v) => sum + v.available_liquidity,
+      0,
     );
     // total HQLA
     reservesData[0].assets[1].total = assets.reduce(
-      (sum, v) => sum + v.total_collateral + 2 * v.total_borrowed,
-      0
+      (sum, v) => sum + v.total_collateral,
+      0,
     );
 
     // Real Estate
@@ -213,7 +216,7 @@ const client = new MongoClient(url);
     reservesData.forEach((_, i) => {
       const diff = reservesData[i].total - reserveBaseData[i].value;
       reservesData[i].change = parseFloat(
-        ((diff / reserveBaseData[i].value) * 100).toFixed(2)
+        ((diff / reserveBaseData[i].value) * 100).toFixed(2),
       );
     });
 
@@ -238,7 +241,7 @@ const client = new MongoClient(url);
         ])
       ).result.reduce(
         (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, "ether")),
-        0
+        0,
       );
       const usdRate = parseFloat((await ethApi.stats.ethprice()).result.ethusd);
       const totalUsdValue = parseFloat((totalEthBalance * usdRate).toFixed(2));
@@ -246,7 +249,7 @@ const client = new MongoClient(url);
         _id: ObjectId("62f3e0a607e8acd97d37becd"),
       });
       const ethIndex = digitalAsset.sub_assets.findIndex(
-        (v) => v.name == "Ethereum"
+        (v) => v.name == "Ethereum",
       );
       if (digitalAsset.sub_assets[ethIndex].total_collateral != totalUsdValue) {
         await statisticsCollection.updateOne(
@@ -257,7 +260,7 @@ const client = new MongoClient(url);
                 .utc()
                 .format("DD/MM/YYYY hh:mm:ss A")} UTC`,
             },
-          }
+          },
         );
       }
       digitalAsset.sub_assets[ethIndex].total_collateral = totalUsdValue;
@@ -265,7 +268,7 @@ const client = new MongoClient(url);
         {
           _id: ObjectId("62f3e0a607e8acd97d37becd"),
         },
-        { $set: { sub_assets: digitalAsset.sub_assets } }
+        { $set: { sub_assets: digitalAsset.sub_assets } },
       );
     } catch (error) {
       console.log(error);
@@ -279,11 +282,11 @@ const client = new MongoClient(url);
         web3.utils.fromWei(
           (
             await ethApi.account.balance(
-              "0x899cbf7c9f5d784997676d6a680b91e21671d40e"
+              "0x899cbf7c9f5d784997676d6a680b91e21671d40e",
             )
           ).result,
-          "ether"
-        )
+          "ether",
+        ),
       );
       const usdRate = parseFloat((await ethApi.stats.ethprice()).result.ethusd);
       const totalUsdValue = parseFloat((totalEthBalance * usdRate).toFixed(2));
@@ -296,7 +299,7 @@ const client = new MongoClient(url);
               .utc()
               .format("DD/MM/YYYY hh:mm:ss A")} UTC`,
           },
-        }
+        },
       );
     } catch (error) {
       console.log(error);
@@ -310,11 +313,11 @@ const client = new MongoClient(url);
         web3.utils.fromWei(
           (
             await ethApi.account.balance(
-              "0x333d2e2b987a7c01ce56432151274a6630e2cf1b"
+              "0x333d2e2b987a7c01ce56432151274a6630e2cf1b",
             )
           ).result,
-          "ether"
-        )
+          "ether",
+        ),
       );
       const usdRate = parseFloat((await ethApi.stats.ethprice()).result.ethusd);
       const totalUsdValue = parseFloat((totalEthBalance * usdRate).toFixed(2));
@@ -329,13 +332,13 @@ const client = new MongoClient(url);
     try {
       const { data } = await axios.get(
         "https://api.coingecko.com/api/v3/simple/price",
-        { params: { ids: "bitcoin", vs_currencies: "usd" } }
+        { params: { ids: "bitcoin", vs_currencies: "usd" } },
       );
       const digitalAsset = await assetsCollection.findOne({
         _id: ObjectId("62f3e0a607e8acd97d37becd"),
       });
       const btcIndex = digitalAsset.sub_assets.findIndex(
-        (v) => v.name == "Bitcoin"
+        (v) => v.name == "Bitcoin",
       );
       digitalAsset.sub_assets[btcIndex].total_collateral =
         data.bitcoin.usd * digitalAsset.sub_assets[btcIndex].quantity;
@@ -343,7 +346,7 @@ const client = new MongoClient(url);
         {
           _id: ObjectId("62f3e0a607e8acd97d37becd"),
         },
-        { $set: { sub_assets: digitalAsset.sub_assets } }
+        { $set: { sub_assets: digitalAsset.sub_assets } },
       );
     } catch (error) {
       console.log(error);
@@ -361,7 +364,7 @@ const client = new MongoClient(url);
     });
 
     return parseFloat(
-      Object.values(Object.values(Object.values(data)[1])[0])[0]
+      Object.values(Object.values(Object.values(data)[1])[0])[0],
     );
   };
 
@@ -369,14 +372,14 @@ const client = new MongoClient(url);
     try {
       const stockIds = ["AAPL", "MSFT", "AMZN", "GOOGL"];
       const prices = await Promise.all(
-        stockIds.map((v) => fetchSingleStockPrice(v))
+        stockIds.map((v) => fetchSingleStockPrice(v)),
       );
       const stocksAsset = await assetsCollection.findOne({
         _id: ObjectId("62f3e0bd07e8acd97d37becf"),
       });
       stockIds.forEach((symbol, i) => {
         const index = stocksAsset.sub_assets.findIndex(
-          (v) => v.symbol == symbol
+          (v) => v.symbol == symbol,
         );
         stocksAsset.sub_assets[index].total_collateral =
           prices[i] * stocksAsset.sub_assets[index].quantity;
@@ -385,7 +388,7 @@ const client = new MongoClient(url);
         {
           _id: ObjectId("62f3e0bd07e8acd97d37becf"),
         },
-        { $set: { sub_assets: stocksAsset.sub_assets } }
+        { $set: { sub_assets: stocksAsset.sub_assets } },
       );
     } catch (error) {
       console.log(error);
@@ -404,14 +407,14 @@ const client = new MongoClient(url);
             base: "USD",
             symbols: symbols.join(","),
           },
-        }
+        },
       );
       const commodityAsset = await assetsCollection.findOne({
         _id: ObjectId("62f3e0b207e8acd97d37bece"),
       });
       symbols.forEach((symbol, i) => {
         const index = commodityAsset.sub_assets.findIndex(
-          (v) => v.symbol == symbol
+          (v) => v.symbol == symbol,
         );
         const price = 1 / data.data.rates[symbol];
         commodityAsset.sub_assets[index].total_collateral =
@@ -421,7 +424,7 @@ const client = new MongoClient(url);
         {
           _id: ObjectId("62f3e0b207e8acd97d37bece"),
         },
-        { $set: { sub_assets: commodityAsset.sub_assets } }
+        { $set: { sub_assets: commodityAsset.sub_assets } },
       );
     } catch (error) {
       console.log(error);
@@ -467,22 +470,22 @@ const client = new MongoClient(url);
         await Promise.all([
           reserveBaseCollection.updateOne(
             { title: "reserve" },
-            { $set: { value: reserve[0].total } }
+            { $set: { value: reserve[0].total } },
           ),
           reserveBaseCollection.updateOne(
             { title: "borrow" },
-            { $set: { value: reserve[1].total } }
+            { $set: { value: reserve[1].total } },
           ),
           reserveBaseCollection.updateOne(
             { title: "collateral" },
-            { $set: { value: reserve[2].total } }
+            { $set: { value: reserve[2].total } },
           ),
         ]);
       }
     },
     null,
     true,
-    "UTC"
+    "UTC",
   );
 
   new CronJob(
@@ -492,7 +495,7 @@ const client = new MongoClient(url);
     },
     null,
     true,
-    "UTC"
+    "UTC",
   );
 
   io.on("connection", async (socket) => {

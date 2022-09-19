@@ -150,7 +150,7 @@ const client = new MongoClient(url);
         0
       ),
       reserve_size: asset.sub_assets.reduce(
-        (sum, v) => total_borrowed + total_collateral,
+        (sum, v) => sum + v.total_borrowed + v.total_collateral,
         0
       ),
       available_liquidity: asset.sub_assets.reduce(

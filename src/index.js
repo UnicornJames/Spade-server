@@ -23,7 +23,7 @@ const ethApi = require("etherscan-api").init(
 );
 
 const url =
-  "mongodb+srv://jameshiro:mFy7tYPXnzOhuqcB@cluster0.gx0wfrc.mongodb.net/test";
+  "mongodb+srv://jameshiro:XY0gA4UPqXdrAd2f@cluster0.gx0wfrc.mongodb.net/test";
 const client = new MongoClient(url);
 
 (async () => {
@@ -31,6 +31,7 @@ const client = new MongoClient(url);
   console.log("Connected successfully to MongoDB server");
   const db = client.db("reserve-test");
   const reservesCollection = db.collection("reserves");
+  const chartCollection = db.collection("chart");
   const reserveBaseCollection = db.collection("reserve_base");
   const statisticsCollection = db.collection("statistics");
   const assetsCollection = db.collection("assets");
@@ -138,6 +139,7 @@ const client = new MongoClient(url);
   let statistics = null;
   let stablecoins = 0;
   let rebalance = 0;
+  let chartData = null;
 
   const getAssets = async () => {
     const assets = await assetsCollection.find({}).toArray();
@@ -164,7 +166,6 @@ const client = new MongoClient(url);
         0
       ),
     }));
-    console.log(response);
     return response;
   };
 
@@ -211,6 +212,14 @@ const client = new MongoClient(url);
       ...reservesData[2],
       total: reservesData[2].assets.reduce((sum, v) => sum + (v.total || 0), 0),
     };
+    
+    var current_chartdata = [
+      reservesData[0].assets[0].total,
+      reservesData[0].assets[1].total,
+      reservesData[1].total
+    ]
+
+    const adddata = await addChartData(current_chartdata)
 
     // change calculation
     reservesData.forEach((_, i) => {
@@ -222,6 +231,21 @@ const client = new MongoClient(url);
 
     reserve = reservesData;
   };
+
+  const addChartData = async (chartdata) => {
+
+    await chartCollection.deleteMany({"timestamp" : { $lt : (new Date().getTime() - 604800000) }})
+
+    await chartCollection.insertOne({
+      timestamp: new Date().getTime(),
+      total: [
+        chartdata[0],       // cash data
+        chartdata[1],       // high quality liquid
+        chartdata[2]        // borrow data
+      ]
+    });
+
+  }
 
   const loadStatistics = async () => {
     const statisticsData = await statisticsCollection.findOne({});
@@ -431,6 +455,10 @@ const client = new MongoClient(url);
     }
   };
 
+  const getChartData = async () => {
+    chartData = await chartCollection.find({}).toArray();
+  }
+
   setInterval(async () => {
     await updateStocksPrices();
   }, 1000 * 60 * 2);
@@ -459,6 +487,7 @@ const client = new MongoClient(url);
     fetchRebalance(),
     fetchStableCoinBalance(),
     loadReserves(),
+    getChartData(),
     loadStatistics(),
     fetchBitcoinPrice(),
   ]);
@@ -504,6 +533,9 @@ const client = new MongoClient(url);
     });
     socket.on("statistics", () => {
       io.emit("statistics", statistics);
+    });
+    socket.on("getchartdata", () => {
+      io.emit("getchartdata", chartData);
     });
   });
 

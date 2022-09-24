@@ -11,6 +11,7 @@ const { MongoClient, ObjectId } = require("mongodb");
 const moment = require("moment");
 const CronJob = require("cron").CronJob;
 const axios = require("axios").default;
+var loopcounter = 0;
 
 // // set server timezone to UTC
 // process.env.TZ = "UTC";
@@ -149,21 +150,21 @@ const client = new MongoClient(url);
       // cash
       available_liquidity: asset.sub_assets.reduce(
         (sum, v) => sum + v.available_liquidity,
-        0
+        0,
       ),
       // borrow
       total_borrowed: asset.sub_assets.reduce(
         (sum, v) => sum + v.total_borrowed,
-        0
+        0,
       ),
       reserve_size: asset.sub_assets.reduce(
         (sum, v) => sum + v.total_borrowed + v.total_collateral,
-        0
+        0,
       ),
       // high quality
       total_collateral: asset.sub_assets.reduce(
         (sum, v) => sum + v.total_collateral,
-        0
+        0,
       ),
     }));
     return response;
@@ -212,14 +213,18 @@ const client = new MongoClient(url);
       ...reservesData[2],
       total: reservesData[2].assets.reduce((sum, v) => sum + (v.total || 0), 0),
     };
-    
+
     var current_chartdata = [
       reservesData[0].assets[0].total,
       reservesData[0].assets[1].total,
-      reservesData[1].total
-    ]
+      reservesData[1].total,
+    ];
 
-    const adddata = await addChartData(current_chartdata)
+    loopcounter++;
+    if(loopcounter == 11) {                   //To upload new data every 1 min
+      await addChartData(current_chartdata);
+      loopcounter = 0;
+    }
 
     // change calculation
     reservesData.forEach((_, i) => {
@@ -233,19 +238,19 @@ const client = new MongoClient(url);
   };
 
   const addChartData = async (chartdata) => {
-
-    await chartCollection.deleteMany({"timestamp" : { $lt : (new Date().getTime() - 604800000) }})
-
+    await chartCollection.deleteMany({
+      timestamp: { $lt: new Date().getTime() - 604800000 },
+    });
+    
     await chartCollection.insertOne({
       timestamp: new Date().getTime(),
       total: [
-        chartdata[0],       // cash data
-        chartdata[1],       // high quality liquid
-        chartdata[2]        // borrow data
-      ]
+        chartdata[0], // cash data
+        chartdata[1], // high quality liquid
+        chartdata[2], // borrow data
+      ],
     });
-
-  }
+  };
 
   const loadStatistics = async () => {
     const statisticsData = await statisticsCollection.findOne({});
@@ -457,7 +462,7 @@ const client = new MongoClient(url);
 
   const getChartData = async () => {
     chartData = await chartCollection.find({}).toArray();
-  }
+  };
 
   setInterval(async () => {
     await updateStocksPrices();

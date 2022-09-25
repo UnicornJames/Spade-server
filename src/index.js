@@ -214,16 +214,16 @@ const ethApi = require("etherscan-api").init(
       ...reservesData[2],
       total: reservesData[2].assets.reduce((sum, v) => sum + (v.total || 0), 0),
     };
-    
-    resetloading ++;
-    if (resetloading == 720) {
+
+    // resetloading ++;
+    // if (resetloading == 720) {
       var current_chartdata = [
         reservesData[0].assets[0].total,
         reservesData[0].assets[1].total,
         reservesData[1].total,
       ];
-      firstloding_flag = 0;
-    }
+    //   firstloding_flag = 0;
+    // }
 
     loopcounter++;
     if (loopcounter == 12) {

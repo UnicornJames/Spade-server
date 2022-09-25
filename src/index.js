@@ -12,6 +12,7 @@ const moment = require("moment");
 const CronJob = require("cron").CronJob;
 const axios = require("axios").default;
 var loopcounter = 0;
+var resetloading = 0;
 
 // // set server timezone to UTC
 // process.env.TZ = "UTC";
@@ -21,13 +22,13 @@ app.use(bodyParser.json());
 
 const ethApi = require("etherscan-api").init(
   "V9NP1HTIADE3VRWGGZ6SWPYGVX3BN83KEP",
-);
-
-const url =
+  );
+  
+  const url =
   "mongodb+srv://jameshiro:XY0gA4UPqXdrAd2f@cluster0.gx0wfrc.mongodb.net/test";
-const client = new MongoClient(url);
+  const client = new MongoClient(url);
 
-(async () => {
+  (async () => {
   await client.connect();
   console.log("Connected successfully to MongoDB server");
   const db = client.db("reserve-test");
@@ -213,15 +214,20 @@ const client = new MongoClient(url);
       ...reservesData[2],
       total: reservesData[2].assets.reduce((sum, v) => sum + (v.total || 0), 0),
     };
-
-    var current_chartdata = [
-      reservesData[0].assets[0].total,
-      reservesData[0].assets[1].total,
-      reservesData[1].total,
-    ];
+    
+    resetloading ++;
+    if (resetloading == 720) {
+      var current_chartdata = [
+        reservesData[0].assets[0].total,
+        reservesData[0].assets[1].total,
+        reservesData[1].total,
+      ];
+      firstloding_flag = 0;
+    }
 
     loopcounter++;
-    if(loopcounter == 11) {                   //To upload new data every 1 min
+    if (loopcounter == 12) {
+      //To upload new data every 1 min
       await addChartData(current_chartdata);
       loopcounter = 0;
     }
@@ -241,7 +247,7 @@ const client = new MongoClient(url);
     await chartCollection.deleteMany({
       timestamp: { $lt: new Date().getTime() - 604800000 },
     });
-    
+
     await chartCollection.insertOne({
       timestamp: new Date().getTime(),
       total: [

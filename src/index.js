@@ -217,7 +217,7 @@ const client = new MongoClient(url);
     
         // new cash and high quality value
         reservesData[0].assets[0].total = reservesData[0].assets[0].total - reservesData[1].total;
-        reservesData[0].assets[1].total = reservesData[0].assets[1].total + reservesData[1].total;
+        reservesData[0].assets[1].total = reservesData[0].assets[1].total + reservesData[1].total * 2;
     
     var current_chartdata = [
       reservesData[0].assets[0].total,
@@ -306,7 +306,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: digitalAsset.sub_assets } },
       );
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -337,7 +337,7 @@ const client = new MongoClient(url);
         },
       );
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -358,7 +358,7 @@ const client = new MongoClient(url);
       const totalUsdValue = parseFloat((totalEthBalance * usdRate).toFixed(2));
       rebalance = totalUsdValue;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -384,7 +384,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: digitalAsset.sub_assets } },
       );
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -426,7 +426,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: stocksAsset.sub_assets } },
       );
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -462,7 +462,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: commodityAsset.sub_assets } },
       );
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -548,6 +548,9 @@ const client = new MongoClient(url);
     socket.on("getchartdata", () => {
       io.emit("getchartdata", chartData);
     });
+    socket.on("servertime", () => {
+      io.emit("servertime", new Date().getTime());
+    })
   });
 
   const port = process.env.PORT || 3000;

@@ -197,7 +197,7 @@ const client = new MongoClient(url);
 
     // Stablecoins
     reservesData[1].assets[0].items[3].total = stablecoins;
-    
+
     // all total
     reservesData[0] = reservesData[0] = {
       ...reservesData[0],
@@ -214,11 +214,13 @@ const client = new MongoClient(url);
       ...reservesData[2],
       total: reservesData[2].assets.reduce((sum, v) => sum + (v.total || 0), 0),
     };
-    
-        // new cash and high quality value
-        reservesData[0].assets[0].total = reservesData[0].assets[0].total - reservesData[1].total;
-        reservesData[0].assets[1].total = reservesData[0].assets[1].total + reservesData[1].total * 2;
-    
+
+    // new cash and high quality value
+    reservesData[0].assets[0].total =
+      reservesData[0].assets[0].total - reservesData[1].total;
+    reservesData[0].assets[1].total =
+      reservesData[0].assets[1].total + reservesData[1].total * 2;
+
     var current_chartdata = [
       reservesData[0].assets[0].total,
       reservesData[0].assets[1].total,
@@ -246,6 +248,7 @@ const client = new MongoClient(url);
   const addChartData = async (chartdata) => {
     await chartCollection.deleteMany({
       timestamp: { $lt: new Date().getTime() - 604800000 },
+      // timestamp: { $lt: 1664250010639 },
     });
 
     await chartCollection.insertOne({
@@ -490,6 +493,7 @@ const client = new MongoClient(url);
 
       io.emit("reserve", reserve);
       io.emit("statistics", statistics);
+      io.emit("servertime", new Date().getTime());
     }
   }, 5000);
 

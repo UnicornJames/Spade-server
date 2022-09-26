@@ -22,13 +22,13 @@ app.use(bodyParser.json());
 
 const ethApi = require("etherscan-api").init(
   "V9NP1HTIADE3VRWGGZ6SWPYGVX3BN83KEP",
-  );
-  
-  const url =
-  "mongodb+srv://jameshiro:XY0gA4UPqXdrAd2f@cluster0.gx0wfrc.mongodb.net/test";
-  const client = new MongoClient(url);
+);
 
-  (async () => {
+const url =
+  "mongodb+srv://jameshiro:XY0gA4UPqXdrAd2f@cluster0.gx0wfrc.mongodb.net/test";
+const client = new MongoClient(url);
+
+(async () => {
   await client.connect();
   console.log("Connected successfully to MongoDB server");
   const db = client.db("reserve-test");
@@ -73,7 +73,7 @@ const ethApi = require("etherscan-api").init(
           0,
         ),
         reserve_size: asset.sub_assets.reduce(
-          (sum, v) => sum + v.total_borrowed + v.total_collateral,
+          (sum, v) => sum + v.reserve_size,
           0,
         ),
         // Cash
@@ -159,7 +159,7 @@ const ethApi = require("etherscan-api").init(
         0,
       ),
       reserve_size: asset.sub_assets.reduce(
-        (sum, v) => sum + v.total_borrowed + v.total_collateral,
+        (sum, v) => sum + v.reserve_size,
         0,
       ),
       // high quality
@@ -197,7 +197,7 @@ const ethApi = require("etherscan-api").init(
 
     // Stablecoins
     reservesData[1].assets[0].items[3].total = stablecoins;
-
+    
     // all total
     reservesData[0] = reservesData[0] = {
       ...reservesData[0],
@@ -214,16 +214,16 @@ const ethApi = require("etherscan-api").init(
       ...reservesData[2],
       total: reservesData[2].assets.reduce((sum, v) => sum + (v.total || 0), 0),
     };
-
-    // resetloading ++;
-    // if (resetloading == 720) {
-      var current_chartdata = [
-        reservesData[0].assets[0].total,
-        reservesData[0].assets[1].total,
-        reservesData[1].total,
-      ];
-    //   firstloding_flag = 0;
-    // }
+    
+        // new cash and high quality value
+        reservesData[0].assets[0].total = reservesData[0].assets[0].total - reservesData[1].total;
+        reservesData[0].assets[1].total = reservesData[0].assets[1].total + reservesData[1].total;
+    
+    var current_chartdata = [
+      reservesData[0].assets[0].total,
+      reservesData[0].assets[1].total,
+      reservesData[1].total,
+    ];
 
     loopcounter++;
     if (loopcounter == 12) {

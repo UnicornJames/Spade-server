@@ -225,7 +225,9 @@ const client = new MongoClient(url);
       reservesData[1].total,
     ];
 
-    await addChartData(current_chartdata);
+
+      await addChartData(current_chartdata);
+
 
     // change calculation
     reservesData.forEach((_, i) => {
@@ -234,8 +236,6 @@ const client = new MongoClient(url);
         ((diff / reserveBaseData[i].value) * 100).toFixed(2),
       );
     });
-
-    reservesData[3] = new Date().getTime();
 
     reserve = reservesData;
   };
@@ -488,7 +488,6 @@ const client = new MongoClient(url);
 
       io.emit("reserve", reserve);
       io.emit("statistics", statistics);
-      io.emit("servertime", new Date().getTime());
     }
   }, 5000);
 

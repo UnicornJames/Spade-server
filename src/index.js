@@ -11,8 +11,6 @@ const { MongoClient, ObjectId } = require("mongodb");
 const moment = require("moment");
 const CronJob = require("cron").CronJob;
 const axios = require("axios").default;
-var loopcounter = 0;
-var resetloading = 0;
 
 // // set server timezone to UTC
 // process.env.TZ = "UTC";
@@ -227,12 +225,7 @@ const client = new MongoClient(url);
       reservesData[1].total,
     ];
 
-    loopcounter++;
-    if (loopcounter == 12) {
-      //To upload new data every 1 min
-      await addChartData(current_chartdata);
-      loopcounter = 0;
-    }
+    await addChartData(current_chartdata);
 
     // change calculation
     reservesData.forEach((_, i) => {
@@ -241,6 +234,8 @@ const client = new MongoClient(url);
         ((diff / reserveBaseData[i].value) * 100).toFixed(2),
       );
     });
+
+    reservesData[3] = new Date().getTime();
 
     reserve = reservesData;
   };

@@ -11,8 +11,6 @@ const { MongoClient, ObjectId } = require("mongodb");
 const moment = require("moment");
 const CronJob = require("cron").CronJob;
 const axios = require("axios").default;
-var loopcounter = 0;
-var resetloading = 0;
 
 // // set server timezone to UTC
 // process.env.TZ = "UTC";
@@ -226,7 +224,7 @@ const client = new MongoClient(url);
       reservesData[0].assets[1].total,
       reservesData[1].total,
     ];
-
+      
     await addChartData(current_chartdata);
 
     // change calculation
@@ -304,7 +302,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: digitalAsset.sub_assets } },
       );
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -335,7 +333,7 @@ const client = new MongoClient(url);
         },
       );
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -356,7 +354,7 @@ const client = new MongoClient(url);
       const totalUsdValue = parseFloat((totalEthBalance * usdRate).toFixed(2));
       rebalance = totalUsdValue;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -382,7 +380,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: digitalAsset.sub_assets } },
       );
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -424,7 +422,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: stocksAsset.sub_assets } },
       );
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -460,7 +458,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: commodityAsset.sub_assets } },
       );
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -547,6 +545,9 @@ const client = new MongoClient(url);
     socket.on("getchartdata", () => {
       io.emit("getchartdata", chartData);
     });
+    socket.on("servertime", () => {
+      io.emit("servertime", new Date().getTime());
+    })
   });
 
   const port = process.env.PORT || 3000;

@@ -307,7 +307,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: digitalAsset.sub_assets } },
       );
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   };
 
@@ -338,7 +338,7 @@ const client = new MongoClient(url);
         },
       );
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   };
 
@@ -359,7 +359,7 @@ const client = new MongoClient(url);
       const totalUsdValue = parseFloat((totalEthBalance * usdRate).toFixed(2));
       rebalance = totalUsdValue;
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   };
 
@@ -385,7 +385,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: digitalAsset.sub_assets } },
       );
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   };
 
@@ -427,7 +427,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: stocksAsset.sub_assets } },
       );
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   };
 
@@ -463,7 +463,7 @@ const client = new MongoClient(url);
         { $set: { sub_assets: commodityAsset.sub_assets } },
       );
     } catch (error) {
-      // console.log(error);
+      console.log(error);
     }
   };
 

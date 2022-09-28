@@ -217,10 +217,6 @@ const client = new MongoClient(url);
       total: reservesData[2].assets.reduce((sum, v) => sum + (v.total || 0), 0),
     };
 
-    // new cash and high quality value
-    reservesData[0].assets[0].total = reservesData[0].assets[0].total;
-    reservesData[0].assets[1].total = reservesData[0].assets[1].total + reservesData[1].total;
-
     var current_chartdata = [
       reservesData[0].assets[0].total,
       reservesData[0].assets[1].total,

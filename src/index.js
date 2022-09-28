@@ -11,6 +11,7 @@ const { MongoClient, ObjectId } = require("mongodb");
 const moment = require("moment");
 const CronJob = require("cron").CronJob;
 const axios = require("axios").default;
+var loopcounter = 0;
 
 // // set server timezone to UTC
 // process.env.TZ = "UTC";
@@ -143,7 +144,7 @@ const client = new MongoClient(url);
 
   const getAssets = async () => {
     const assets = await assetsCollection.find({}).toArray();
-
+    // send to market
     const response = assets.map((asset) => ({
       ...asset,
       // cash
@@ -151,6 +152,7 @@ const client = new MongoClient(url);
         (sum, v) => sum + v.available_liquidity,
         0,
       ),
+      
       // borrow
       total_borrowed: asset.sub_assets.reduce(
         (sum, v) => sum + v.total_borrowed,
@@ -166,6 +168,7 @@ const client = new MongoClient(url);
         0,
       ),
     }));
+    
     return response;
   };
 
@@ -178,6 +181,7 @@ const client = new MongoClient(url);
       (sum, v) => sum + v.available_liquidity,
       0,
     );
+    
     // total HQLA
     reservesData[0].assets[1].total = assets.reduce(
       (sum, v) => sum + v.total_collateral,
@@ -214,10 +218,8 @@ const client = new MongoClient(url);
     };
 
     // new cash and high quality value
-    reservesData[0].assets[0].total =
-      reservesData[0].assets[0].total - reservesData[1].total;
-    reservesData[0].assets[1].total =
-      reservesData[0].assets[1].total + reservesData[1].total;
+    reservesData[0].assets[0].total = reservesData[0].assets[0].total;
+    reservesData[0].assets[1].total = reservesData[0].assets[1].total + reservesData[1].total;
 
     var current_chartdata = [
       reservesData[0].assets[0].total,
@@ -225,7 +227,12 @@ const client = new MongoClient(url);
       reservesData[1].total,
     ];
       
-    await addChartData(current_chartdata);
+    loopcounter++;
+    if (loopcounter == 120) {
+      await addChartData(current_chartdata);
+      getChartData();
+      loopcounter = 0;
+    }
 
     // change calculation
     reservesData.forEach((_, i) => {
@@ -243,7 +250,7 @@ const client = new MongoClient(url);
   const addChartData = async (chartdata) => {
     await chartCollection.deleteMany({
       timestamp: { $lt: new Date().getTime() - 604800000 },
-      // timestamp: { $lt: 1664250010639 },
+      // timestamp: { $lt: 2664250010639 },
     });
 
     await chartCollection.insertOne({
@@ -499,6 +506,7 @@ const client = new MongoClient(url);
     getChartData(),
     loadStatistics(),
     fetchBitcoinPrice(),
+    getChartData(),
   ]);
 
   new CronJob(

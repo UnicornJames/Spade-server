@@ -545,9 +545,6 @@ const client = new MongoClient(url);
     socket.on("getchartdata", () => {
       io.emit("getchartdata", chartData);
     });
-    socket.on("servertime", () => {
-      io.emit("servertime", new Date().getTime());
-    })
   });
 
   const port = process.env.PORT || 3000;

@@ -235,6 +235,8 @@ const client = new MongoClient(url);
       );
     });
 
+    reservesData[3] = new Date().getTime();
+
     reserve = reservesData;
   };
 
@@ -486,7 +488,6 @@ const client = new MongoClient(url);
 
       io.emit("reserve", reserve);
       io.emit("statistics", statistics);
-      io.emit("servertime", new Date().getTime());
     }
   }, 5000);
 

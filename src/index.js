@@ -254,7 +254,7 @@ const client = new MongoClient(url);
 
   const addChartData = async (chartdata) => {
     await chartCollection.deleteMany({
-      timestamp: { $lt: new Date().getTime() - 604800000 },
+      timestamp: { $lt: new Date().getTime() - 86400000 },
       // timestamp: { $lt: 2664250010639 },
     });
 

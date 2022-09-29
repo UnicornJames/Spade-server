@@ -188,6 +188,12 @@ const client = new MongoClient(url);
       0,
     );
 
+    // borrowed
+    reservesData[1].total = assets.reduce(
+      (sum, v) => sum + v.total_borrowed,
+      0,
+    );
+
     // Real Estate
     reservesData[2].assets[0].total = assets[0].total_collateral;
     // Digital Assets

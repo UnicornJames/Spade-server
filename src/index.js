@@ -496,6 +496,7 @@ const client = new MongoClient(url);
         loadReserves(),
         loadStatistics(),
         fetchBitcoinPrice(),
+        getChartData(),
       ]);
 
       io.emit("reserve", reserve);
@@ -508,10 +509,8 @@ const client = new MongoClient(url);
     fetchRebalance(),
     fetchStableCoinBalance(),
     loadReserves(),
-    getChartData(),
     loadStatistics(),
     fetchBitcoinPrice(),
-    getChartData(),
   ]);
 
   new CronJob(

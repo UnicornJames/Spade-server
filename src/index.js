@@ -234,7 +234,8 @@ const client = new MongoClient(url);
       
     loopcounter++;
     if (loopcounter == 120) {
-      addChartData(current_chartdata);
+      await addChartData(current_chartdata);
+      getChartData();
       loopcounter = 0;
     }
 
@@ -498,6 +499,7 @@ const client = new MongoClient(url);
         getChartData(),
       ]);
 
+      io.emit("getchartdata", chartData);
       io.emit("reserve", reserve);
       io.emit("statistics", statistics);
     }

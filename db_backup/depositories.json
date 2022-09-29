@@ -123,7 +123,7 @@
     "$oid": "62fd0894373b1bd05148ec9d"
   },
   "name": "Real Estate",
-  "tooltip": "Real Estate",
+  "tooltip": "Spade Real Estate Reserves are held and managed by our partners Goldman Sachs Group, Inc and Blackstone Inc.",
   "items": [
     {
       "name": "On Tron",
@@ -152,7 +152,7 @@
     "$oid": "62fd08a3373b1bd05148ec9e"
   },
   "name": "Commodities",
-  "tooltip": "Commodities",
+  "tooltip": "Spade’s commodity depository is held and managed by Brinks. The collateral stored at these depositories: WTI Crude Oil, Brent Crude Oil, Gold, Copper, and Silver. Commodity depository of natural gas is held and managed by ConocoPhillips (LNG Facility). Commodity depository of oil is held and managed by ExxonMobil.",
   "items": [
     {
       "name": "Brinks",
@@ -174,7 +174,7 @@
     "$oid": "62fd08af373b1bd05148ec9f"
   },
   "name": "Digital Assets",
-  "tooltip": "Digital Assets",
+  "tooltip": "Spade’s digital asset depository is held and managed by our strategic partners Gemini Custody and BitGo Trust Company. The collateral stored at these depositories: Bitcoin and Ethereum. ",
   "items": [
     {
       "name": "Bitcoin",
@@ -196,7 +196,7 @@
     "$oid": "62fd08be373b1bd05148eca0"
   },
   "name": "Stock Index",
-  "tooltip": "Stocks",
+  "tooltip": "Spade’s stock index depository is held and managed by our strategic partner Fidelity International Ltd. The Collateral stored at these depositories: INDEXNIKKEI: NI225, INDEXDJX: .DJI, INDEXFTSE: UKX, and ININDEXASX: XJO",
   "items": [
     {
       "name": "Apple (AAPL)",

@@ -235,7 +235,6 @@ const client = new MongoClient(url);
     loopcounter++;
     if (loopcounter == 120) {
       await addChartData(current_chartdata);
-      getChartData();
       loopcounter = 0;
     }
 

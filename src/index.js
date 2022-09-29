@@ -495,6 +495,7 @@ const client = new MongoClient(url);
         loadReserves(),
         loadStatistics(),
         fetchBitcoinPrice(),
+        getChartData(),
       ]);
 
       io.emit("reserve", reserve);

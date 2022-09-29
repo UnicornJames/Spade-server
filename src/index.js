@@ -486,7 +486,7 @@ const client = new MongoClient(url);
 
   setInterval(async () => {
     await fetchStableCoinBalance();
-  }, 1000 * 60 * 30);
+  }, 1000 * 60 * 2);
 
   setInterval(async () => {
     if (io.engine.clientsCount) {

@@ -147,6 +147,9 @@ const client = new MongoClient(url);
     const assets = await assetsCollection.find({}).toArray();
     let reservesData = await reservesCollection.find({}).toArray();
     const reserveBaseData = await reserveBaseCollection.find({}).toArray();
+    
+        // increase asset by borrow
+        assets[2].sub_assets[0].total_collateral = assets[2].sub_assets[0].total_collateral + (reservesData[1].total - reserveBaseData[1].value);
     // send to market
     const response = assets.map((asset) => ({
       ...asset,
@@ -171,9 +174,6 @@ const client = new MongoClient(url);
         0,
       ),
     }));
-
-    // increase asset by borrow
-    assets[2].sub_assets[0].total_collateral = assets[2].sub_assets[0].total_collateral + (reservesData[1].total - reserveBaseData[1].value);
 
     return response;
   };

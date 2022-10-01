@@ -363,7 +363,7 @@ const client = new MongoClient(url);
           "0xE9a5A2AcFA9BeE149eD28fCBf12B60ff2Ad97efB"
         ])
       ).result.reduce(
-        (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, "eth")),
+        (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, "ether")),
         0,
       );
       // const totalEthBalance = parseFloat(

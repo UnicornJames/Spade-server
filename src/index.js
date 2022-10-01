@@ -155,8 +155,8 @@ const client = new MongoClient(url);
     let Commodities = await assetsCollection.findOne({ name: "Commodities" });
 
     Commodities.sub_assets[0].total_collateral =
-      assets[2].sub_assets[0].total_collateral +
-      (reservesData[1].total - reserveBaseData[1].value);
+      assets[2].sub_assets[0].total_collateral 
+      // + (reservesData[1].total - reserveBaseData[1].value);
 
     await assetsCollection.updateOne(
       { name: "Commodities" },

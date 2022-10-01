@@ -317,7 +317,7 @@ const client = new MongoClient(url);
         await ethApi.account.balance([
           "0x6165fd87c1bc73a4c44b23934e9136fd92df5b01",
           "0xca8fa8f0b631ecdb18cda619c4fc9d197c8affca",
-          "0xE9a5A2AcFA9BeE149eD28fCBf12B60ff2Ad97efB",
+          // "0xE9a5A2AcFA9BeE149eD28fCBf12B60ff2Ad97efB",
         ])
       ).result.reduce(
         (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, "ether")),
@@ -358,16 +358,25 @@ const client = new MongoClient(url);
   // fetch stablecoins balance
   const fetchStableCoinBalance = async () => {
     try {
-      const totalEthBalance = parseFloat(
-        web3.utils.fromWei(
-          (
-            await ethApi.account.balance(
-              "0x899cbf7c9f5d784997676d6a680b91e21671d40e",
-            )
-          ).result,
-          "ether",
-        ),
+      const totalEthBalance = (
+        await ethApi.account.balance([
+          "0x899cbf7c9f5d784997676d6a680b91e21671d40e",
+          "0xE9a5A2AcFA9BeE149eD28fCBf12B60ff2Ad97efB"
+        ])
+      ).result.reduce(
+        (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, "eth")),
+        0,
       );
+      // const totalEthBalance = parseFloat(
+      //   web3.utils.fromWei(
+      //     (
+      //       await ethApi.account.balance(
+      //         "0x899cbf7c9f5d784997676d6a680b91e21671d40e",
+      //       )
+      //     ).result,
+      //     "ether",
+      //   ),
+      // );
       const usdRate = parseFloat((await ethApi.stats.ethprice()).result.ethusd);
       const totalUsdValue = parseFloat((totalEthBalance * usdRate).toFixed(2));
       stablecoins = totalUsdValue;

@@ -267,7 +267,7 @@ const client = new MongoClient(url);
     ];
 
     loopcounter++;
-    if (loopcounter == 120) {
+    if (loopcounter == 12) {
       await addChartData(current_chartdata);
       getChartData();
       loopcounter = 0;
@@ -516,11 +516,11 @@ const client = new MongoClient(url);
 
   setInterval(async () => {
     await updateStocksPrices();
-  }, 1000 * 60 * 2);
+  }, 1000 * 60 * 1);
 
   setInterval(async () => {
     await fetchStableCoinBalance();
-  }, 1000 * 60 * 2);
+  }, 1000 * 60 * 1);
 
   setInterval(async () => {
     if (io.engine.clientsCount) {

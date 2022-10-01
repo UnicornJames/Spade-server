@@ -317,7 +317,6 @@ const client = new MongoClient(url);
         await ethApi.account.balance([
           "0x6165fd87c1bc73a4c44b23934e9136fd92df5b01",
           "0xca8fa8f0b631ecdb18cda619c4fc9d197c8affca",
-          // "0xE9a5A2AcFA9BeE149eD28fCBf12B60ff2Ad97efB",
         ])
       ).result.reduce(
         (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, "ether")),

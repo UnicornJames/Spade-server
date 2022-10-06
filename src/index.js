@@ -252,7 +252,7 @@ const client = new MongoClient(url);
     // also, increase total smart reserve
     reservesData[0].total = reservesData[0].total + (reservesData[1].total - reserveBaseData[1].value);
     reservesData[0].assets[0].total = reservesData[0].assets[0].total - (reservesData[1].total - reserveBaseData[1].value);
-    reservesData[0].assets[1].total = reservesData[0].assets[1].total + 2 * (reservesData[1].total - reserveBaseData[1].value);
+    reservesData[0].assets[1].total = reservesData[0].assets[1].total + (reservesData[1].total - reserveBaseData[1].value);
 
     var current_chartdata = [
       reservesData[0].assets[0].total,

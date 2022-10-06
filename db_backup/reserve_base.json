@@ -1,19 +1,23 @@
-[{
-  "_id": {
-    "$oid": "62f8cdb507e8acd97d37bef3"
+[
+  {
+    "_id": {
+      "$oid": "62f8cdb507e8acd97d37bef3"
+    },
+    "title": "reserve",
+    "value": 5240991230.603655
   },
-  "title": "reserve",
-  "value": 4503043821.783323
-},{
-  "_id": {
-    "$oid": "62f8cdc907e8acd97d37bef4"
+  {
+    "_id": {
+      "$oid": "62f8cdc907e8acd97d37bef4"
+    },
+    "title": "borrow",
+    "value": 1327538505
   },
-  "title": "borrow",
-  "value": 1328371652.14
-},{
-  "_id": {
-    "$oid": "62f8cdd307e8acd97d37bef5"
-  },
-  "title": "collateral",
-  "value": 3116362430.7833233
-}]
+  {
+    "_id": {
+      "$oid": "62f8cdd307e8acd97d37bef5"
+    },
+    "title": "collateral",
+    "value": 3135877819.6036553
+  }
+]

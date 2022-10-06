@@ -1,270 +1,275 @@
-[{
-  "_id": {
-    "$oid": "62f3e08807e8acd97d37becb"
+[
+  {
+    "_id": {
+      "$oid": "62f3e08807e8acd97d37becb"
+    },
+    "name": "Real Estate",
+    "loan_to_value": 50,
+    "borrow_flexible_apr": 4.33,
+    "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+    "utilization_rate": 32.36,
+    "oracle_price": 1,
+    "sub_assets": [
+      {
+        "name": "Residential",
+        "total_collateral": 964191239,
+        "loan_to_value": 50,
+        "total_borrowed": 419500000,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%\t",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 4.33,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 1146021391,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      },
+      {
+        "name": "Commercial",
+        "total_collateral": 11311478,
+        "loan_to_value": 50,
+        "total_borrowed": 531147800,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%\t",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 4.33,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 11460000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      },
+      {
+        "name": "Industrial",
+        "total_collateral": 26410000,
+        "loan_to_value": 50,
+        "total_borrowed": 119500000,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%\t",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 4.33,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 11460000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      },
+      {
+        "name": "Land",
+        "total_collateral": 264100000,
+        "loan_to_value": 50,
+        "total_borrowed": 119500000,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%\t",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 4.33,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 11460000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      }
+    ],
+    "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+    "supply_flexible_apy": 4
   },
-  "name": "Real Estate",
-  "loan_to_value": 50,
-  "borrow_flexible_apr": 4.33,
-  "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
-  "utilization_rate": 32.36,
-  "oracle_price": 1,
-  "sub_assets": [
-    {
-      "name": "Residential",
-      "total_collateral": 964191239,
-      "loan_to_value": 50,
-      "total_borrowed": 419500000,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%\t",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 4.33,
-      "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
-      "reserve_size": 16940000,
-      "available_liquidity": 1146021391,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
+  {
+    "_id": {
+      "$oid": "62f3e0a607e8acd97d37becd"
     },
-    {
-      "name": "Commercial",
-      "total_collateral": 11311478,
-      "loan_to_value": 50,
-      "total_borrowed": 5311478,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%\t",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 4.33,
-      "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
-      "reserve_size": 16940000,
-      "available_liquidity": 11460000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
-    },
-    {
-      "name": "Industrial",
-      "total_collateral": 26410000,
-      "loan_to_value": 50,
-      "total_borrowed": 11950000,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%\t",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 4.33,
-      "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
-      "reserve_size": 16940000,
-      "available_liquidity": 11460000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
-    },
-    {
-      "name": "Land",
-      "total_collateral": 26410000,
-      "loan_to_value": 50,
-      "total_borrowed": 11950000,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%\t",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 4.33,
-      "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
-      "reserve_size": 16940000,
-      "available_liquidity": 11460000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
-    }
-  ],
-  "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-  "supply_flexible_apy": 4
-},{
-  "_id": {
-    "$oid": "62f3e0a607e8acd97d37becd"
+    "name": "Digital Assets",
+    "loan_to_value": 54,
+    "borrow_flexible_apr": 2.5,
+    "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+    "utilization_rate": 32.36,
+    "oracle_price": 1,
+    "sub_assets": [
+      {
+        "name": "Bitcoin",
+        "total_collateral": 84027840,
+        "loan_to_value": 55,
+        "total_borrowed": 392183210,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 2.64,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 11460000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1,
+        "quantity": 4160
+      },
+      {
+        "name": "Ethereum",
+        "total_collateral": 446464376.74,
+        "loan_to_value": 55,
+        "total_borrowed": 36368000,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 2.63,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 11460000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      }
+    ],
+    "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+    "supply_flexible_apy": 4
   },
-  "name": "Digital Assets",
-  "loan_to_value": 54,
-  "borrow_flexible_apr": 2.5,
-  "borrow_fixed_term_apr": "variable",
-  "utilization_rate": 32.36,
-  "oracle_price": 1,
-  "sub_assets": [
-    {
-      "name": "Bitcoin",
-      "total_collateral": 83408000,
-      "loan_to_value": 55,
-      "total_borrowed": 39218321,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 2.64,
-      "borrow_fixed_term_apr": "subjective",
-      "reserve_size": 16940000,
-      "available_liquidity": 11460000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1,
-      "quantity": 4160
+  {
+    "_id": {
+      "$oid": "62f3e0b207e8acd97d37bece"
     },
-    {
-      "name": "Ethereum",
-      "total_collateral": 503881536.05,
-      "loan_to_value": 55,
-      "total_borrowed": 363680,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 2.63,
-      "borrow_fixed_term_apr": "subjective",
-      "reserve_size": 16940000,
-      "available_liquidity": 11460000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
-    }
-  ],
-  "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-  "supply_flexible_apy": 4
-},{
-  "_id": {
-    "$oid": "62f3e0b207e8acd97d37bece"
+    "name": "Commodities",
+    "loan_to_value": 50,
+    "borrow_flexible_apr": 2.56,
+    "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+    "utilization_rate": 32.36,
+    "oracle_price": 1,
+    "sub_assets": [
+      {
+        "name": "WTI Crude Oil",
+        "total_collateral": 964191239,
+        "quantity": 12321604,
+        "symbol": "WTIOIL",
+        "loan_to_value": 30,
+        "total_borrowed": 718432020,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 3.01,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 718432020,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      },
+      {
+        "name": "Brent Crude Oil",
+        "total_collateral": 7566180.559999997,
+        "quantity": 83218,
+        "symbol": "BRENTOIL",
+        "loan_to_value": 30,
+        "total_borrowed": 36368000,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 2.89,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 114600000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      },
+      {
+        "name": "Natural Gas",
+        "total_collateral": 605174.9000000007,
+        "quantity": "90190",
+        "symbol": "NG",
+        "loan_to_value": 20,
+        "total_borrowed": 36368000,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 3.53,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 11460000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      },
+      {
+        "name": "Gold",
+        "total_collateral": 827861.9901376996,
+        "quantity": 481,
+        "symbol": "XAU",
+        "loan_to_value": 40,
+        "total_borrowed": 319600000,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 2.76,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 11460000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      }
+    ],
+    "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+    "supply_flexible_apy": 4
   },
-  "name": "Commodities",
-  "loan_to_value": 50,
-  "borrow_flexible_apr": 2.56,
-  "borrow_fixed_term_apr": "subjective",
-  "utilization_rate": 32.36,
-  "oracle_price": 1,
-  "sub_assets": [
-    {
-      "name": "WTI Crude Oil",
-      "total_collateral": 1112271193.0800085,
-      "quantity": 12321604,
-      "symbol": "WTIOIL",
-      "loan_to_value": 30,
-      "total_borrowed": 718432020,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 3.01,
-      "borrow_fixed_term_apr": "subjective",
-      "reserve_size": 16940000,
-      "available_liquidity": 0,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
+  {
+    "_id": {
+      "$oid": "62f3e0bd07e8acd97d37becf"
     },
-    {
-      "name": "Brent Crude Oil",
-      "total_collateral": 841338.2499999795,
-      "quantity": 8705,
-      "symbol": "BRENTOIL",
-      "loan_to_value": 30,
-      "total_borrowed": 363680,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 2.89,
-      "borrow_fixed_term_apr": "subjective",
-      "reserve_size": 16940000,
-      "available_liquidity": 114600000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
-    },
-    {
-      "name": "Natural Gas",
-      "total_collateral": 808372.9699999783,
-      "quantity": "90190",
-      "symbol": "NG",
-      "loan_to_value": 20,
-      "total_borrowed": 363680,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 3.53,
-      "borrow_fixed_term_apr": "subjective",
-      "reserve_size": 16940000,
-      "available_liquidity": 11460000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
-    },
-    {
-      "name": "Gold",
-      "total_collateral": 828190.6099999932,
-      "quantity": 481,
-      "symbol": "XAU",
-      "loan_to_value": 40,
-      "total_borrowed": 319600000,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 2.76,
-      "borrow_fixed_term_apr": "subjective",
-      "reserve_size": 16940000,
-      "available_liquidity": 11460000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
-    }
-  ],
-  "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-  "supply_flexible_apy": 4
-},{
-  "_id": {
-    "$oid": "62f3e0bd07e8acd97d37becf"
-  },
-  "name": "Stocks",
-  "loan_to_value": 60,
-  "borrow_flexible_apr": 2.41,
-  "borrow_fixed_term_apr": "subjective",
-  "utilization_rate": 32.36,
-  "oracle_price": 1,
-  "sub_assets": [
-    {
-      "name": "Apple (AAPL)",
-      "symbol": "AAPL",
-      "total_collateral": 280156805.25,
-      "quantity": 1762325,
-      "loan_to_value": 30,
-      "total_borrowed": 363680,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 2.87,
-      "borrow_fixed_term_apr": "subjective",
-      "reserve_size": 16940000,
-      "available_liquidity": 11460000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
-    },
-    {
-      "name": "Microsoft (MSFT)",
-      "symbol": "MSFT",
-      "total_collateral": 776343.7,
-      "quantity": 2953,
-      "loan_to_value": 30,
-      "total_borrowed": 363680,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 2.83,
-      "borrow_fixed_term_apr": "subjective",
-      "reserve_size": 16940000,
-      "available_liquidity": 11460000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
-    },
-    {
-      "name": "Amazon (AMZN)",
-      "symbol": "AMZN",
-      "total_collateral": 787631.320,
-      "quantity": 6118,
-      "loan_to_value": 25,
-      "total_borrowed": 363680,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 2.98,
-      "borrow_fixed_term_apr": "subjective",
-      "reserve_size": 16940000,
-      "available_liquidity": 11460000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
-    },
-    {
-      "name": "Alphabet (GOOGL)",
-      "symbol": "GOOGL",
-      "total_collateral": 784694.82,
-      "quantity": 7203,
-      "loan_to_value": 30,
-      "total_borrowed": 363680,
-      "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-      "supply_flexible_apy": 4,
-      "borrow_flexible_apr": 2.94,
-      "borrow_fixed_term_apr": "subjective",
-      "reserve_size": 16940000,
-      "available_liquidity": 11460000,
-      "utilization_rate": 32.36,
-      "oracle_price": 1
-    }
-  ],
-  "supply_fixed_term_apy": "from 4.13% up to 16.22%",
-  "supply_flexible_apy": 4
-}]
+    "name": "Stock Indexes",
+    "loan_to_value": 60,
+    "borrow_flexible_apr": 2.41,
+    "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+    "utilization_rate": 32.36,
+    "oracle_price": 1,
+    "sub_assets": [
+      {
+        "name": "INDEXNIKKEI: NI225",
+        "symbol": "NI225",
+        "total_collateral": 242425427,
+        "quantity": 1762325,
+        "loan_to_value": 30,
+        "total_borrowed": 36368000,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 2.87,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 11460000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      },
+      {
+        "name": "INDEXDJX: .DJI",
+        "symbol": ".DJI",
+        "total_collateral": 68991172.63,
+        "quantity": 295301,
+        "loan_to_value": 30,
+        "total_borrowed": 36368000,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 2.83,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 11460000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      },
+      {
+        "name": "INDEXFTSE: UKX",
+        "symbol": "UKX",
+        "total_collateral": 6916126.32,
+        "quantity": 61183,
+        "loan_to_value": 25,
+        "total_borrowed": 36368000,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 2.98,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 11460000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      },
+      {
+        "name": "ININDEXASX: XJO",
+        "symbol": "XJO",
+        "total_collateral": 20814563.49,
+        "quantity": 217203,
+        "loan_to_value": 30,
+        "total_borrowed": 36368000,
+        "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+        "supply_flexible_apy": 4,
+        "borrow_flexible_apr": 2.94,
+        "borrow_fixed_term_apr": "from 4.16% up to 16.33%",
+        "reserve_size": 16940000,
+        "available_liquidity": 11460000,
+        "utilization_rate": 32.36,
+        "oracle_price": 1
+      }
+    ],
+    "supply_fixed_term_apy": "from 4.13% up to 16.22%",
+    "supply_flexible_apy": 4
+  }
+]

@@ -1,153 +1,58 @@
-[{
-  "_id": {
-    "$oid": "62fd0874373b1bd05148ec9c"
+[
+  {
+    "_id": {
+      "$oid": "62fd0874373b1bd05148ec9c"
+    },
+    "name": "Cash",
+    "tooltip": "Spade Cash Reserves are held with our banking partners within the United States, United Kingdom, Japan & Cayman Islands",
+    "items": [
+      {
+        "name": "JPMorgan Chase & Co",
+        "total": 85251000.5,
+        "less": 12000573.58,
+        "total_text": "Total Authorized",
+        "less_text": "Less: Authorized but not issued"
+      },
+      {
+        "name": "Citibank",
+        "total": 85251000.5,
+        "less": 12000573.58,
+        "total_text": "Total Authorized",
+        "less_text": "Less: Authorized but not issued"
+      },
+      {
+        "name": "Deutsche Bank",
+        "total": 85251000.5,
+        "less": 12000573.58,
+        "total_text": "Total Authorized",
+        "less_text": "Less: Authorized but not issued"
+      }
+    ]
   },
-  "name": "Cash",
-  "tooltip": "Spade Cash Reserves are held with our banking partners within the United States, United Kingdom, Japan & Cayman Islands",
-  "items": [
-    {
-      "name": "Goldman Sachs Group Inc",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
+  {
+    "_id": {
+      "$oid": "62fd0894373b1bd05148ec9d"
     },
-    {
-      "name": "Wells Fargo & Co.",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Bank Of America Corp",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Citi",
-      "total": 8551000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Goldman Sachs Group Inc",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Wells Fargo & Co.",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Bank Of America Corp",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Citi",
-      "total": 8551000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Goldman Sachs Group Inc",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Wells Fargo & Co.",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Bank Of America Corp",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Citi",
-      "total": 8551000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Goldman Sachs Group Inc",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Wells Fargo & Co.",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Bank Of America Corp",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "Citi",
-      "total": 8551000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    }
-  ]
-},{
-  "_id": {
-    "$oid": "62fd0894373b1bd05148ec9d"
+    "name": "Real Estate",
+    "tooltip": "Spade Real Estate Reserves are held and managed by our partners Goldman Sachs Group, Inc and Blackstone Inc.",
+    "items": [
+      {
+        "name": "Blackstone Real Estate Group",
+        "total": 85251000.5,
+        "less": 12000573.58,
+        "total_text": "Total Authorized",
+        "less_text": "Less: Authorized but not issued"
+      },
+      {
+        "name": "Goldman Sachs Realty Management",
+        "total": 85251000.5,
+        "less": 12000573.58,
+        "total_text": "Total Authorized",
+        "less_text": "Less: Authorized but not issued"
+      }
+    ]
   },
-  "name": "Real Estate",
-  "tooltip": "Spade Real Estate Reserves are held and managed by our partners Goldman Sachs Group, Inc and Blackstone Inc.",
-  "items": [
-    {
-      "name": "On Tron",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "On Tron",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    },
-    {
-      "name": "On Tron",
-      "total": 85251000.5,
-      "less": 12000573.58,
-      "total_text": "Total Authorized",
-      "less_text": "Less: Authorized but not issued"
-    }
-  ]
-},{
+  {
   "_id": {
     "$oid": "62fd08a3373b1bd05148ec9e"
   },
@@ -155,21 +60,29 @@
   "tooltip": "Spade’s commodity depository is held and managed by Brinks. The collateral stored at these depositories: WTI Crude Oil, Brent Crude Oil, Gold, Copper, and Silver. Commodity depository of natural gas is held and managed by ConocoPhillips (LNG Facility). Commodity depository of oil is held and managed by ExxonMobil.",
   "items": [
     {
-      "name": "Brinks",
+      "name": "Brinks Inc",
       "total": 1120401860,
       "less": 12000573.58,
       "total_text": "Total Authorized",
       "less_text": "Less: Authorized but not issued"
     },
     {
-      "name": "LNG Facility - ConocoPhillips",
+      "name": "Conocophilips",
       "total": 8580264.16376,
+      "less": 12000573.58,
+      "total_text": "Total Authorized",
+      "less_text": "Less: Authorized but not issued"
+    },
+    {
+      "name": "ExxonMobil",
+      "total": 858026.16376,
       "less": 12000573.58,
       "total_text": "Total Authorized",
       "less_text": "Less: Authorized but not issued"
     }
   ]
-},{
+},
+{
   "_id": {
     "$oid": "62fd08af373b1bd05148ec9f"
   },
@@ -177,40 +90,42 @@
   "tooltip": "Spade’s digital asset depository is held and managed by our strategic partners Gemini Custody and BitGo Trust Company. The collateral stored at these depositories: Bitcoin and Ethereum. ",
   "items": [
     {
-      "name": "Bitcoin",
+      "name": "Gemini",
       "total": 89210629.63,
       "less": 12000573.58,
       "total_text": "Total Authorized",
       "less_text": "Less: Authorized but not issued"
     },
     {
-      "name": "Ethereum",
+      "name": "BitGo",
       "total": 63566311.56,
       "less": 12000573.58,
       "total_text": "Total Authorized",
       "less_text": "Less: Authorized but not issued"
     }
   ]
-},{
+},
+{
   "_id": {
     "$oid": "62fd08be373b1bd05148eca0"
   },
   "name": "Stock Index",
-  "tooltip": "Spade’s stock index depository is held and managed by our strategic partner Fidelity International Ltd. The Collateral stored at these depositories: INDEXNIKKEI: NI225, INDEXDJX: .DJI, INDEXFTSE: UKX, and ININDEXASX: XJO",
+  "tooltip": "Spade’s stock index depository is held and managed by our strategic partner Fidelity International Ltd. The Collateral stored at these depositories: INDEXNIKKEI: NI225, INDEXDJX: .DJI, INDEXFTSE: UKX, and ININDEXASX: XJO ",
   "items": [
     {
-      "name": "Apple (AAPL)",
+      "name": "Vanguard",
       "total": 320833695.44,
       "less": 12000573.58,
       "total_text": "Total Authorized",
       "less_text": "Less: Authorized but not issued"
     },
     {
-      "name": "Microsoft (MSFT)",
+      "name": "Fidelity",
       "total": 46594273.85,
       "less": 12000573.58,
       "total_text": "Total Authorized",
       "less_text": "Less: Authorized but not issued"
     }
   ]
-}]
+}
+]

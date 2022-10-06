@@ -1,35 +1,39 @@
-[{
-  "_id": {
-    "$oid": "62fbe46e373b1bd05148ec8f"
+[
+  {
+    "_id": {
+      "$oid": "62fbe46e373b1bd05148ec8f"
+    },
+    "name": "view assets",
+    "output": [
+      "\"REAL ESTATE\" value is US$814,933.29",
+      "\"DIGITAL ASSETS\" value is US$0.00",
+      "\"STOCKS\" value is $0.00",
+      "\"COMMODITIES\" value is $0.00",
+      "",
+      "These asset valuations were conducted at 18:30 PM (31/08/22)"
+    ]
   },
-  "name": "view assets",
-  "output": [
-    "\"REAL ESTATE\" value is US$814,933.29",
-    "\"DIGITAL ASSETS\" value is US$0.00",
-    "\"STOCKS\" value is $0.00",
-    "\"COMMODITIES\" value is $0.00",
-    "",
-    "These asset valuations were conducted at 18:30 PM (31/08/22)"
-  ]
-},{
-  "_id": {
-    "$oid": "62fbe5d2373b1bd05148ec90"
+  {
+    "_id": {
+      "$oid": "62fbe5d2373b1bd05148ec90"
+    },
+    "name": "borrow info",
+    "output": [
+      "Collateral Value: US$814,933.29",
+      "Loan-To-Value: 50.00%",
+      "Credit Line: US$529,706.64",
+      "Credit utilized: US$118,942.14",
+      "APR: 5.13%",
+      "Borrow Term Length: 12 months "
+    ]
   },
-  "name": "borrow info",
-  "output": [
-    "Collateral Value: US$814,933.29",
-    "Loan-To-Value: 50.00%",
-    "Credit Line: US$529,706.64",
-    "Credit utilized: US$118,942.14",
-    "APR: 5.13%",
-    "Borrow Term Length: 12 months "
-  ]
-},{
-  "_id": {
-    "$oid": "62fbe5f9373b1bd05148ec91"
-  },
-  "name": "ltv",
-  "output": [
-    "Your average loan-to-value for all of your active positions: 50.00%"
-  ]
-}]
+  {
+    "_id": {
+      "$oid": "62fbe5f9373b1bd05148ec91"
+    },
+    "name": "ltv",
+    "output": [
+      "Your average loan-to-value for all of your active positions: 50.00%"
+    ]
+  }
+]

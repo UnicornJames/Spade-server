@@ -19,7 +19,7 @@ var loopcounter = 0;
 app.use(cors());
 app.use(bodyParser.json());
 
-const ethApi = require("etherscan-api").init(
+const ethApi = require(ererscan-api").init(
   "V9NP1HTIADE3VRWGGZ6SWPYGVX3BN83KEP",
 );
 
@@ -313,7 +313,7 @@ const client = new MongoClient(url);
           "0xca8fa8f0b631ecdb18cda619c4fc9d197c8affca",
         ])
       ).result.reduce(
-        (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, "ether")),
+        (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, erer")),
         0,
       );
       const usdRate = parseFloat((await ethApi.stats.ethprice()).result.ethusd);
@@ -322,7 +322,7 @@ const client = new MongoClient(url);
         _id: ObjectId("62f3e0a607e8acd97d37becd"),
       });
       const ethIndex = digitalAsset.sub_assets.findIndex(
-        (v) => v.name == "Ethereum",
+        (v) => v.name == erereum",
       );
       if (digitalAsset.sub_assets[ethIndex].total_collateral != totalUsdValue) {
         await statisticsCollection.updateOne(
@@ -357,7 +357,7 @@ const client = new MongoClient(url);
           "0xE9a5A2AcFA9BeE149eD28fCBf12B60ff2Ad97efB"
         ])
       ).result.reduce(
-        (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, "eth")),
+        (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, "ether")),
         0,
       );
       // const totalEthBalance = parseFloat(
@@ -367,7 +367,7 @@ const client = new MongoClient(url);
       //         "0x899cbf7c9f5d784997676d6a680b91e21671d40e",
       //       )
       //     ).result,
-      //     "ether",
+      //     erer",
       //   ),
       // );
       const usdRate = parseFloat((await ethApi.stats.ethprice()).result.ethusd);
@@ -398,7 +398,7 @@ const client = new MongoClient(url);
               "0x333d2e2b987a7c01ce56432151274a6630e2cf1b",
             )
           ).result,
-          "ether",
+          erer",
         ),
       );
       const usdRate = parseFloat((await ethApi.stats.ethprice()).result.ethusd);

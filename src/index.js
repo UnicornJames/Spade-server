@@ -24,7 +24,7 @@ const ethApi = require("etherscan-api").init(
 );
 
 const url =
-  "mongodb+srv://jameshiro:XY0gA4UPqXdrAd2f@cluster0.gx0wfrc.mongodb.net/test";
+  "mongodb+srv://jameshiro:yoqRIj9z8oznJkR3@cluster0.gx0wfrc.mongodb.net/test";
   // "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
 

@@ -24,7 +24,7 @@ const ethApi = require("etherscan-api").init(
 );
 
 const url =
-  "mongodb+srv://jameshiro:XY0gA4UPqXdrAd2f@cluster0.gx0wfrc.mongodb.net/test";
+  "mongodb+srv://jameshiro:yoqRIj9z8oznJkR3@cluster0.gx0wfrc.mongodb.net/test";
   // "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
 
@@ -146,47 +146,46 @@ const client = new MongoClient(url);
 
   const getAssets = async () => {
     const assets = await assetsCollection.find({}).toArray();
-    let reservesData = await reservesCollection.find({}).toArray();
-    const reserveBaseData = await reserveBaseCollection.find({}).toArray();
+    // let reservesData = await reservesCollection.find({}).toArray();
+    // const reserveBaseData = await reserveBaseCollection.find({}).toArray();
 
     // increase asset by borrow
     // assets[2].sub_assets[0].total_collateral = assets[2].sub_assets[0].total_collateral + (reservesData[1].total - reserveBaseData[1].value);
     // let newWTI = assets[2].sub_assets[0].total_collateral;
-    let Commodities = await assetsCollection.findOne({ name: "Commodities" });
+    // let Commodities = await assetsCollection.findOne({ name: "Commodities" });
 
-    Commodities.sub_assets[0].total_collateral =
-      assets[2].sub_assets[0].total_collateral 
+    // Commodities.sub_assets[0].total_collateral =
+    //   assets[2].sub_assets[0].total_collateral 
       // + (reservesData[1].total - reserveBaseData[1].value);
 
-    await assetsCollection.updateOne(
-      { name: "Commodities" },
-      { $set: { sub_assets: Commodities.sub_assets } },
-    );
+    // await assetsCollection.updateOne(
+    //   { name: "Commodities" },
+    //   { $set: { sub_assets: Commodities.sub_assets } },
+    // );
 
     // send to market
     const response = assets.map((asset) => ({
       ...asset,
       // cash
       available_liquidity: asset.sub_assets.reduce(
-        (sum, v) => sum + v.available_liquidity,
-        0,
+        (sum, v) => sum + v.available_liquidity, 0,
       ),
 
       // borrow
       total_borrowed: asset.sub_assets.reduce(
-        (sum, v) => sum + v.total_borrowed,
-        0,
+        (sum, v) => sum + v.total_borrowed, 0,
       ),
+
+      // reserve
       reserve_size: asset.sub_assets.reduce(
-        (sum, v) => sum + v.reserve_size,
-        0,
+        (sum, v) => sum + v.reserve_size, 0,
       ),
+
       // high quality
       total_collateral: asset.sub_assets.reduce(
-        (sum, v) => sum + v.total_collateral,
-        0,
-      ),
-    }));
+        (sum, v) => sum + v.total_collateral, 0,
+        ),
+      }));
 
     return response;
   };
@@ -216,7 +215,7 @@ const client = new MongoClient(url);
       (sum, v) => sum + v.total_borrowed,
       0,
     );
-
+    
     // Real Estate
     reservesData[2].assets[0].total = assets[0].total_collateral;
     // Digital Assets
@@ -230,7 +229,7 @@ const client = new MongoClient(url);
 
     // Stablecoins
     reservesData[1].assets[0].items[3].total = stablecoins;
-
+    
     // all total
     reservesData[0] = reservesData[0] = {
       ...reservesData[0],
@@ -243,22 +242,17 @@ const client = new MongoClient(url);
         ...reservesData[1].assets[1].items,
       ].reduce((sum, v) => sum + (v.total || 0), 0),
     };
+
     reservesData[2] = {
       ...reservesData[2],
       total: reservesData[2].assets.reduce((sum, v) => sum + (v.total || 0), 0),
     };
-
+    
     // to calc the reserve page graph, increase borrow, increase high and decrease cash.
     // also, increase total smart reserve
-    reservesData[0].total =
-      reservesData[0].total +
-      (reservesData[1].total - reserveBaseData[1].value);
-    reservesData[0].assets[0].total =
-      reservesData[0].assets[0].total -
-      (reservesData[1].total - reserveBaseData[1].value);
-    reservesData[0].assets[1].total =
-      reservesData[0].assets[1].total +
-      2 * (reservesData[1].total - reserveBaseData[1].value);
+    reservesData[0].total = reservesData[0].total + (reservesData[1].total - reserveBaseData[1].value);
+    reservesData[0].assets[0].total = reservesData[0].assets[0].total - (reservesData[1].total - reserveBaseData[1].value);
+    reservesData[0].assets[1].total = reservesData[0].assets[1].total + 2 * (reservesData[1].total - reserveBaseData[1].value);
 
     var current_chartdata = [
       reservesData[0].assets[0].total,
@@ -284,6 +278,7 @@ const client = new MongoClient(url);
     reservesData[3] = new Date().getTime();
 
     reserve = reservesData;
+    console.log();
   };
 
   const addChartData = async (chartdata) => {

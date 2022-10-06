@@ -278,7 +278,6 @@ const client = new MongoClient(url);
     reservesData[3] = new Date().getTime();
 
     reserve = reservesData;
-    console.log();
   };
 
   const addChartData = async (chartdata) => {

@@ -20,7 +20,7 @@
     },
     {
       "title": "Others",
-      "total": 300500,
+      "total": 300500.0,
       "update_type": "manual"
     }
   ]
@@ -41,17 +41,17 @@
       "items": [
         {
           "title": "USD",
-          "total": 671642835,
+          "total": 671642835.0,
           "update_type": "manual"
         },
         {
           "title": "GBP",
-          "total": 281642835,
+          "total": 281642835.0,
           "update_type": "manual"
         },
         {
           "title": "EUR",
-          "total": 371642835,
+          "total": 371642835.0,
           "update_type": "manual"
         },
         {
@@ -65,12 +65,12 @@
       "items": [
         {
           "title": "Fiat currencies",
-          "total": 2300000,
+          "total": 2300000.0,
           "update_type": "manual"
         },
         {
           "title": "Stablecoin currencies",
-          "total": 310000,
+          "total": 310000.0,
           "update_type": "manual"
         }
       ]
@@ -108,7 +108,7 @@
     },
     {
       "title": "Others",
-      "total": 300500,
+      "total": 300500.0,
       "update_type": "auto"
     }
   ]

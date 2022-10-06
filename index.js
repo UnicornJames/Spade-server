@@ -14,25 +14,24 @@ const axios = require("axios").default;
 var loopcounter = 0;
 
 // // set server timezone to UTC
-
 // process.env.TZ = "UTC";
 
 app.use(cors());
 app.use(bodyParser.json());
 
-const ethApi = require("etherscan-api").init(
+const ethApi = require(ererscan-api").init(
   "V9NP1HTIADE3VRWGGZ6SWPYGVX3BN83KEP",
 );
 
 const url =
-  "mongodb+srv://jameshiro:XY0gA4UPqXdrAd2f@cluster0.gx0wfrc.mongodb.net/test";
-  // "mongodb://localhost:27017";
+  "mongodb+srv://jameshiro:yoqRIj9z8oznJkR3@cluster0.gx0wfrc.mongodb.net/test";
+  // "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
 
 (async () => {
   await client.connect();
-  console.log("Connected successfully to MongoDB server");
   const db = client.db("reserve-test");
+  // const db = client.db("local_spade");
   const reservesCollection = db.collection("reserves");
   const chartCollection = db.collection("chart");
   const reserveBaseCollection = db.collection("reserve_base");
@@ -43,6 +42,7 @@ const client = new MongoClient(url);
   const commandsCollection = db.collection("commands");
   const auditsCollection = db.collection("audits");
   const depositoriesCollection = db.collection("depositories");
+  console.log("Connected successfully to MongoDB server");
 
   app.get("/audits", async (req, res) => {
     res.json(await auditsCollection.find({}).toArray());
@@ -146,35 +146,46 @@ const client = new MongoClient(url);
 
   const getAssets = async () => {
     const assets = await assetsCollection.find({}).toArray();
-    let reservesData = await reservesCollection.find({}).toArray();
-    const reserveBaseData = await reserveBaseCollection.find({}).toArray();
+    // let reservesData = await reservesCollection.find({}).toArray();
+    // const reserveBaseData = await reserveBaseCollection.find({}).toArray();
+
+    // increase asset by borrow
+    // assets[2].sub_assets[0].total_collateral = assets[2].sub_assets[0].total_collateral + (reservesData[1].total - reserveBaseData[1].value);
+    // let newWTI = assets[2].sub_assets[0].total_collateral;
+    // let Commodities = await assetsCollection.findOne({ name: "Commodities" });
+
+    // Commodities.sub_assets[0].total_collateral =
+    //   assets[2].sub_assets[0].total_collateral 
+      // + (reservesData[1].total - reserveBaseData[1].value);
+
+    // await assetsCollection.updateOne(
+    //   { name: "Commodities" },
+    //   { $set: { sub_assets: Commodities.sub_assets } },
+    // );
+
     // send to market
     const response = assets.map((asset) => ({
       ...asset,
       // cash
       available_liquidity: asset.sub_assets.reduce(
-        (sum, v) => sum + v.available_liquidity,
-        0,
+        (sum, v) => sum + v.available_liquidity, 0,
       ),
-      
+
       // borrow
       total_borrowed: asset.sub_assets.reduce(
-        (sum, v) => sum + v.total_borrowed,
-        0,
+        (sum, v) => sum + v.total_borrowed, 0,
       ),
+
+      // reserve
       reserve_size: asset.sub_assets.reduce(
-        (sum, v) => sum + v.reserve_size,
-        0,
+        (sum, v) => sum + v.reserve_size, 0,
       ),
+
       // high quality
       total_collateral: asset.sub_assets.reduce(
-        (sum, v) => sum + v.total_collateral,
-        0,
-      ),
-    }));
-
-    // increase asset by borrow
-    assets[2].sub_assets[0].total_collateral = assets[2].sub_assets[0].total_collateral + (reservesData[1].total - reserveBaseData[1].value);
+        (sum, v) => sum + v.total_collateral, 0,
+        ),
+      }));
 
     return response;
   };
@@ -185,14 +196,14 @@ const client = new MongoClient(url);
     const assets = await getAssets();
     //let borrowedAsset = await reservesData[2].assets[4].total;
 
-    //borrowedAsset = borrowedAsset + (reservesData[1].total - reserveBaseData[1].value);
+    // borrowedAsset = borrowedAsset + (reservesData[1].total - reserveBaseData[1].value);
 
     // total cash
     reservesData[0].assets[0].total = assets.reduce(
       (sum, v) => sum + v.available_liquidity,
       0,
     );
-    
+
     // total HQLA
     reservesData[0].assets[1].total = assets.reduce(
       (sum, v) => sum + v.total_collateral,
@@ -204,7 +215,7 @@ const client = new MongoClient(url);
       (sum, v) => sum + v.total_borrowed,
       0,
     );
-
+    
     // Real Estate
     reservesData[2].assets[0].total = assets[0].total_collateral;
     // Digital Assets
@@ -218,7 +229,7 @@ const client = new MongoClient(url);
 
     // Stablecoins
     reservesData[1].assets[0].items[3].total = stablecoins;
-
+    
     // all total
     reservesData[0] = reservesData[0] = {
       ...reservesData[0],
@@ -231,25 +242,26 @@ const client = new MongoClient(url);
         ...reservesData[1].assets[1].items,
       ].reduce((sum, v) => sum + (v.total || 0), 0),
     };
+
     reservesData[2] = {
       ...reservesData[2],
       total: reservesData[2].assets.reduce((sum, v) => sum + (v.total || 0), 0),
     };
-
+    
     // to calc the reserve page graph, increase borrow, increase high and decrease cash.
     // also, increase total smart reserve
     reservesData[0].total = reservesData[0].total + (reservesData[1].total - reserveBaseData[1].value);
     reservesData[0].assets[0].total = reservesData[0].assets[0].total - (reservesData[1].total - reserveBaseData[1].value);
-    reservesData[0].assets[1].total = reservesData[0].assets[1].total + 2 * (reservesData[1].total - reserveBaseData[1].value);
+    reservesData[0].assets[1].total = reservesData[0].assets[1].total + (reservesData[1].total - reserveBaseData[1].value);
 
     var current_chartdata = [
       reservesData[0].assets[0].total,
       reservesData[0].assets[1].total,
       reservesData[1].total,
     ];
-      
+
     loopcounter++;
-    if (loopcounter == 120) {
+    if (loopcounter == 12) {
       await addChartData(current_chartdata);
       getChartData();
       loopcounter = 0;
@@ -301,7 +313,7 @@ const client = new MongoClient(url);
           "0xca8fa8f0b631ecdb18cda619c4fc9d197c8affca",
         ])
       ).result.reduce(
-        (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, "ether")),
+        (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, erer")),
         0,
       );
       const usdRate = parseFloat((await ethApi.stats.ethprice()).result.ethusd);
@@ -310,7 +322,7 @@ const client = new MongoClient(url);
         _id: ObjectId("62f3e0a607e8acd97d37becd"),
       });
       const ethIndex = digitalAsset.sub_assets.findIndex(
-        (v) => v.name == "Ethereum",
+        (v) => v.name == erereum",
       );
       if (digitalAsset.sub_assets[ethIndex].total_collateral != totalUsdValue) {
         await statisticsCollection.updateOne(
@@ -339,16 +351,25 @@ const client = new MongoClient(url);
   // fetch stablecoins balance
   const fetchStableCoinBalance = async () => {
     try {
-      const totalEthBalance = parseFloat(
-        web3.utils.fromWei(
-          (
-            await ethApi.account.balance(
-              "0x899cbf7c9f5d784997676d6a680b91e21671d40e",
-            )
-          ).result,
-          "ether",
-        ),
+      const totalEthBalance = (
+        await ethApi.account.balance([
+          "0x899cbf7c9f5d784997676d6a680b91e21671d40e",
+          "0xE9a5A2AcFA9BeE149eD28fCBf12B60ff2Ad97efB"
+        ])
+      ).result.reduce(
+        (sum, v) => sum + parseFloat(web3.utils.fromWei(v.balance, "ether")),
+        0,
       );
+      // const totalEthBalance = parseFloat(
+      //   web3.utils.fromWei(
+      //     (
+      //       await ethApi.account.balance(
+      //         "0x899cbf7c9f5d784997676d6a680b91e21671d40e",
+      //       )
+      //     ).result,
+      //     erer",
+      //   ),
+      // );
       const usdRate = parseFloat((await ethApi.stats.ethprice()).result.ethusd);
       const totalUsdValue = parseFloat((totalEthBalance * usdRate).toFixed(2));
       stablecoins = totalUsdValue;
@@ -377,7 +398,7 @@ const client = new MongoClient(url);
               "0x333d2e2b987a7c01ce56432151274a6630e2cf1b",
             )
           ).result,
-          "ether",
+          erer",
         ),
       );
       const usdRate = parseFloat((await ethApi.stats.ethprice()).result.ethusd);
@@ -498,11 +519,11 @@ const client = new MongoClient(url);
 
   setInterval(async () => {
     await updateStocksPrices();
-  }, 1000 * 60 * 2);
+  }, 1000 * 60 * 1);
 
   setInterval(async () => {
     await fetchStableCoinBalance();
-  }, 1000 * 60 * 2);
+  }, 1000 * 60 * 1);
 
   setInterval(async () => {
     if (io.engine.clientsCount) {
